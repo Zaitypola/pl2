@@ -1,0 +1,59 @@
+#Introducción a BeautifulSoup
+
+#1 Creación de objeto BeautifulSoup
+
+from bs4 import BeautifulSoup
+
+#Constructor usando open("nombre_archivo")
+soup = BeautifulSoup(open("index.html"))
+
+#Constructor pasándole directamente el código HTML
+soup = BeautifulSoup("<html>data</html>")
+
+#BeautifulSoup genera a partir del DOM un árbol de objetos Python. Accesible a través de los tags.
+
+Genera un árbol con las tags, accedemos a cada elemento de la siguiente manera:
+
+links = soup.find_all('a') devuelve todas las etiquetas <a ...> ... </a> y devuelve un array
+de objetos con las etiquetas.
+
+for link in links:
+	link.get('href') --> acceso a atributos dentro de la etiqueta
+	-href, id, class, etc.
+
+===========================================================
+MODIFICAR EL HTML (acceso a los atributos de cada etiqueta)
+===========================================================
+
+soup.find('a',{"id" : "link3"}).text Busca el elemento <a> de id link3
+
+soup.find_all('a',{"class" : "...") todos los enlaces con cierta clase CSS
+
+
+cambiar tags -> tag.name = "..."
+
+cambiar valores de atributos:
+
+tag = soup.p
+
+tag['class']='onfire'
+
+print tag['class']
+
+EJERCICIO:Cambiar aquellos href que cumplan cierta expreg(demartina)
+import re
+
+
+=============
+RECURSIVIDAD
+=============
+
+Búsqueda exhaustiva empezando por una URL y apilando llamadas recursivas con todos
+los links que se encuentran dentro
+
+
+====
+RSS
+====
+
+Filtrar noticias por algunas palabras
