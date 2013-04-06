@@ -4,6 +4,9 @@ import urllib2
 
 
 print 'scream for me Brazil'
+print 'scream for me Brazil'
+print 'scream for me Brazil'
+print 'scream for me Brazil'
 
 print 'scream for me Brazil'
 print 'scream for me Brazil'
