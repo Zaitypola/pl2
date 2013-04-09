@@ -15,9 +15,3 @@ for link in soup.find_all('img'):
         print link['src']
 
 
-
-
-"""url_tochange = 'http://inapcache.boston.com/universal/site_graphics/blogs/bigpicture/feb13dailylife/bp35.jpg'
-result = re.split('site_graphics', url_tochange)
-print url_tochange
-print result[0]+'new_site'+result[1]"""
