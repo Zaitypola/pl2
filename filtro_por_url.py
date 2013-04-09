@@ -3,13 +3,6 @@ import re
 import urllib2
 
 
-print 'scream for me Brazil'
-print 'scream for me Brazil'
-print 'scream for me Brazil'
-print 'scream for me Brazil'
-
-print 'scream for me Brazil'
-print 'scream for me Brazil'
 #mover de site_graphics a otra localizacion dentro del servidor.
 url = urllib2.urlopen('http://www.boston.com/bigpicture/2013/03/daily_life_february_2013.html')
 soup = BeautifulSoup(url)
