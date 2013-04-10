@@ -1,7 +1,21 @@
 from bs4 import BeautifulSoup
 
-soup = BeautifulSoup("<html><p class='clase'>data</html>")
+
+f=open('web/index.html','r+')
 
 
+soup = BeautifulSoup(f)
 
-print soup.find('p')['class']
+
+for link in soup.find_all('a'):
+    link['class']='red'
+
+f.close()
+
+f=open('web/index.html','w')
+
+f.write(soup.prettify())
+
+f.close()
+
+

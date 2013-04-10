@@ -1,0 +1,25 @@
+p.red{
+color:red;
+}
+
+p.blue{
+color:blue;
+}
+
+p{
+color:orange;
+}
+
+#p4{
+color:yellow;
+}
+
+td,tr{
+
+border:4px solid blue;
+
+}
+
+a.hover:hover{
+color:red;
+}

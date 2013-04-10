@@ -9,9 +9,9 @@ soup = BeautifulSoup(url)
 
 for link in soup.find_all('img'):
     if re.match('^http://inapcache.+/site_graphics/.+',link.get('src')):
-        print link['src']
         result = re.split('site_graphics',link.get('src'))
         link['src']=result[0]+'new_site'+result[1]
-        print link['src']
+        
+f = open('index.html','w')
 
-
+f.write(soup.prettify())
