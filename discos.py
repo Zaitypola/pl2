@@ -10,7 +10,10 @@ def class_item_no_style(tag):
 
 products = soup.find_all(class_item_no_style)
 
-i=1
+i=0
 for product in products:
-    print str(i)+'-'+product.find('div', {'class' : 'name l'}).string.encode('8859') #String, siguiente hijo de la etiqueta.
+    #print str(i)+'-'+product.find('div', {'class' : 'name l'}).string.encode('8859')
+    print str(i)+product.name
     i = i+1
+
+print products[35].parent
