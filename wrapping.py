@@ -1,11 +1,8 @@
 from bs4 import BeautifulSoup
+import urllib2
 
+url = urllib2.urlopen('http://www.google.es')
+soup = BeautifulSoup(url)
 
-#Pon la palabra dedos en negrita.
-
-f=open('index.html','rw')
-soup = BeautifulSoup(f)
-
-
-
+    
 print soup.prettify()
