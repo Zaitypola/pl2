@@ -16,7 +16,6 @@ Que aprendemos?
 url = urllib2.urlopen('http://www.boston.com/bigpicture/2013/03/daily_life_february_2013.html')
 soup = BeautifulSoup(url)
 
-
 for link in soup.find_all('img'):
     src = link.get('src')
     if re.match('^http://inapcache.+/site_graphics/.+', src):
