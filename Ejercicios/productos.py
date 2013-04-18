@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 import urllib2
-
 '''
 Imprima el nombre, la referencia y el/los precio/precios de todos los productos que aperecen en la galeria. Algunos precios pueden tener un descuento, considere el precio nuevo y el antiguo.
 Evite aquellos productos que esten envueltos en un 'div' con clase 'blueknow-item'.
@@ -11,6 +10,7 @@ Que aprendemos?
 3- Aplicar busquedas a partir de un nodo que no sea la raiz.
 4- Usar diferentes codificaciones para caracteres extranios que no sean unicode.
 '''
+
 
 url = urllib2.urlopen('http://www.demartina.com/lego-star-wars-c-73_29_50.html')
 soup = BeautifulSoup(url)
@@ -34,3 +34,5 @@ for product in products:
         print 'New Price '+product.find('div', class_='new').text
 
     print '\n'
+    
+    
