@@ -27,8 +27,9 @@ for product in products:
     
     print name
     print reference.text
-    if price_tag.find('div', class_='old') is None:
-        print price_tag.text
+    
+    if len(price_tag.contents) == 1:
+        print price_tag.string
     else:
         print 'Old price '+product.find('div', class_='old').text
         print 'New Price '+product.find('div', class_='new').text

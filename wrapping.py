@@ -5,4 +5,10 @@ url = urllib2.urlopen('http://www.google.es')
 soup = BeautifulSoup(url)
 
     
-print soup.prettify()
+a_tag = soup.a
+
+print a_tag
+
+a_tag.name = "b"
+
+print a_tag
