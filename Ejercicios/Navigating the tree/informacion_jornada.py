@@ -32,7 +32,7 @@ def print_highlights(live_link):
         print accion+' - '+minuto+' - '+descripcion
 
 
-url = urllib2.urlopen('http://www.as.com/resultados/futbol/primera/jornada-31/')
+url = urllib2.urlopen('http://www.as.com/resultados/futbol/primera/jornada-32/')
 soup = BeautifulSoup(url)
 
 results_div = soup.find('div', class_="jornadas_tot")
