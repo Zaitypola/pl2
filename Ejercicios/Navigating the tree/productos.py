@@ -1,10 +1,12 @@
+# -*- coding: iso-8859-15 -*-
+
 from bs4 import BeautifulSoup
 import urllib2
 '''
 Imprima el nombre, la referencia y el/los precio/precios de todos los productos que aperecen en la galeria. Algunos precios pueden tener un descuento, considere el precio nuevo y el antiguo.
 Evite aquellos productos que esten envueltos en un 'div' con clase 'blueknow-item'.
  
-Que aprendemos?
+Qué aprendemos?
 1- Abrir una url.
 2- Realizar un filtro a partir de una funcion para find_all().
 3- Aplicar busquedas a partir de un nodo que no sea la raiz.
@@ -31,9 +33,13 @@ for product in products:
     if len(price_tag.contents) == 1:
         print price_tag.string
     else:
-        print 'Old price '+product.find('div', class_='old').text
-        print 'New Price '+product.find('div', class_='new').text
-
+        old_price = product.find('div', class_='old').text
+        new_price = product.find('div', class_='new').text
+        old_float = float(old_price.replace('¤',''))
+        new_float = float(new_price.replace('¤',''))    
+        print 'Old price '+old_price
+        print 'New Price '+new_price
+        print 'Discount '+str(round(100-(new_float*100)/old_float,2))+'%'
     print '\n'
     
     
