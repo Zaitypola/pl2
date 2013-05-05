@@ -11,6 +11,7 @@ Qué aprendemos?
 2- Realizar un filtro a partir de una funcion para find_all().
 3- Aplicar busquedas a partir de un nodo que no sea la raiz.
 4- Usar diferentes codificaciones para caracteres extranios que no sean unicode.
+5- Diferentes formas de llamar a find().
 '''
 
 
