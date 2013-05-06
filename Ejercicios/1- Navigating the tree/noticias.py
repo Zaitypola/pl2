@@ -16,9 +16,13 @@ feeds = {'http://ep00.epimg.net/rss/elpais/portada.xml',
 search_input = raw_input('Inserte término de búsqueda: ')
 
 for feed in feeds:
+    print '=============================='
     soup = BeautifulSoup (urllib2.urlopen(feed))
-    print soup.title.text
-    items = soup.find_all(text=re.compile(search_input))
+
+    
+    items = soup.find_all("item")    
     for item in items:
-        if isinstance(item.title,BeautifulSoup.CData):
-            print item.title.data
+        if len(item.find_all(text=re.compile(search_input))) > 0:
+            print item.title.text
+            print item.description.text
+        

@@ -19,6 +19,7 @@ print soup.find(id="id1")
 tag=soup.find('p').wrap(soup.new_tag("div"))
 tag['id'] = "id2"
 print soup.find(id="id1")
+print tag.name
 
 
 
