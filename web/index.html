@@ -5,15 +5,32 @@
   <title>
    Título
   </title>
+  <script type="text/javascript">
+  		var called = false;
+  		
+    	function change(){
+    		var img = document.getElementById("img");
+    	
+    		if (called == false){
+				img.src = "http://siswimdaily.files.wordpress.com/2013/02/upton-2.jpg"
+				called = true;
+			}else{
+				img.src = "http://staticmd.lavozdelinterior.com.ar/sites/default/files/styles/landscape_1140_641/public/galer_a_multimedia/kate_upton_10.jpg"
+				called = false;
+			}
+  	}
+  
+  </script>
  </head>
  <body>
+ <button onclick="change()" >Púlsame</button>
   <p class="red">
    Ejemplo1
   </p>
   <p class="blue">
    que dise usted
   </p>
-  <a class="red" href="www.example.com">
+  <a class="red" href="http://www.example.com">
    Example
   </a>
   <p>
@@ -73,6 +90,6 @@
    </tr>
   </table>
   <p>Hola</p>
-  <img src='http://www.example.com/img/img1.png' title='Imagen'/>
+  <img id="img" src='http://staticmd.lavozdelinterior.com.ar/sites/default/files/styles/landscape_1140_641/public/galer_a_multimedia/kate_upton_10.jpg' title='Imagen'/>
    </body>
 </html>
