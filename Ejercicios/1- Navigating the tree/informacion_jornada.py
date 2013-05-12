@@ -31,8 +31,8 @@ def print_highlights(live_link):
         descripcion = goal.find('td', {'class' : 'desc'}).text
         print accion+' - '+minuto+' - '+descripcion
 
-
-url = urllib2.urlopen('http://www.as.com/resultados/futbol/primera/jornada-34/')
+fixture = raw_input("Introduce número de la jornada: ")
+url = urllib2.urlopen('http://www.as.com/resultados/futbol/primera/jornada-'+fixture+'/')
 soup = BeautifulSoup(url)
 
 results_div = soup.find('div', class_="jornadas_tot")
