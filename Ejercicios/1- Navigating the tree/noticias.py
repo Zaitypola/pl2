@@ -19,10 +19,10 @@ while True:
         print '- '+soup.title.text
         for item in items:
             if item.find(["title","description"], text=re.compile(search_input,re.IGNORECASE)):
-                title = item.title.string
-                description = re.sub(r'(<img .+>|<a.+>)','',item.description.string)
-                link = item.link.string
-                date = item.pubDate.string
+                title = item.title.string.encode('cp1252')
+                description = re.sub(r'(<img .+>|<a.+>)','',item.description.string).encode('cp1252')
+                link = item.link.string.encode('cp1252')
+                date = item.pubDate.string.encode('cp1252')
                 print date
                 print title
                 print description

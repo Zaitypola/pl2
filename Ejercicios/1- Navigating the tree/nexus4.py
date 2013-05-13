@@ -17,7 +17,7 @@ while not stock:
         server = smtplib.SMTP('smtp.gmail.com:587')
         server.starttls()
         server.login("jorgecalmar","pastaylomo23")
-        server.sendmail("jorgecalmar@gmail.com",{"jesus.talamante87@gmail.com"},message.as_string())
+        server.sendmail("jorgecalmar@gmail.com",{"jorgecalmar@gmail.com"},message.as_string())
         server.quit()
     else:
         print 'No hay stock'

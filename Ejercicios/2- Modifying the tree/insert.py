@@ -8,7 +8,13 @@ insert_before() a certain tag or element
 insert() at the end of the parent's contents
 
 '''
+'''
+url = urllib2.urlopen('http://www.accuweather.com/en/es/sevilla/306733/may-weather/306733?monyr=5/1/2013&view=table')
+table = SoupStrainer("table")
+soup = BeautifulSoup(url, "html.parser", parse_only=table)
 
+#print soup.prettify()
+'''
 markup = '<a href="http://example.com/">I linked to <i>example.com</i></a>'
 soup = BeautifulSoup(markup)
     

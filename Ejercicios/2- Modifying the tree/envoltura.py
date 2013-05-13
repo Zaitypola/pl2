@@ -11,9 +11,9 @@ import re
 
 #Envolvemos el p en un nuevo div con id="id2"
 
-soup = BeautifulSoup('<html><head><title>Title</title></head><body><div id="id1"><p>Hola que haces</p></div><body></html>')
+soup = BeautifulSoup('<html><head><title>Title</title></head><body><div id="id1"><p>foobar</p></div><body></html>')
 
-matches = soup.find_all(text=re.compile("Ho"))
+matches = soup.find_all(text=re.compile("foo"))
 
 for match in matches:
     match.wrap(soup.new_tag("b"))
