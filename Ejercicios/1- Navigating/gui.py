@@ -1,5 +1,3 @@
-#!/usr/local/bin/python
-
 from Tkinter import *
 import noticias
 
