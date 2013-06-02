@@ -1,3 +1,5 @@
+# -*- coding: iso-8859-15 -*-
+
 '''
 Cambios en el codigo, cambiar la envoltura de un texto por otra.
 Funciones wrap y unwrap, envolver en etiquetas un elemento o desenvolverlo.
