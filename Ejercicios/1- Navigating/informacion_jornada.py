@@ -7,7 +7,7 @@ import re
 '''
 Retransmision de todos los partido en directo. Goles y minuto.
 '''
-
+#Funciones de las que haremos uso: print_matches y print_highlights_live
 def print_matches(table):
     #Busco todas las filas de la tabla.
     rows = table.find_all('tr')
@@ -42,7 +42,7 @@ def print_highlights(live_link):
         descripcion = goal.find('td', {'class' : 'desc'}).text
         print accion+' - '+minuto+' - '+descripcion
         
-#Pedimos al usuario el número de la jornada de la que quiere información.
+#Pedimos al usuario el número de la jornada de la que quiere información. Aquí comienza la ejecución.
 fixture = raw_input("Introduce número de la jornada: ")
 #Abrimos la URL usando urllib2.
 url = urllib2.urlopen('http://www.as.com/resultados/futbol/primera/jornada-'+fixture+'/')

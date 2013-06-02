@@ -32,4 +32,5 @@ def search(feeds,search_input,t):
                 t.insert(END,title+'\n')
                 t.insert(END,description+'\n')
                 t.insert(END,link+'\n')
+                t.insert(END,'\n')
     t.insert(END,'\n')

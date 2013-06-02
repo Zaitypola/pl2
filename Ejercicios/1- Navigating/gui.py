@@ -98,15 +98,14 @@ Checkbutton(frame, text="El Mundo",variable=var_elMundo).place(x=150,y=15)
 Checkbutton(frame, text="El Pais",variable=var_elPais).place(x=150,y=30)
 Checkbutton(frame, text="ABC",variable=var_ABC).place(x=150,y=45)
 #Texto de salida de la búsqueda.
-t=Text(frame, height=26, width=300)
-t.place(x=0,y=150)
+t=Text(frame, height=26, width=145)
+t.place(x=100,y=180)
 #Scrollbar para el texto
-scroll = Scrollbar(root)
-scroll.config(command=t.yview)
-t.config(yscrollcommand=scroll.set)
-scroll.pack(side=RIGHT,fill=Y)
-
-#Texto para el input de la bñusqueda.
+scrollY = Scrollbar(root)
+scrollY.config(command=t.yview)
+t.config(yscrollcommand=scrollY.set)
+scrollY.pack(side=RIGHT,fill=Y)
+#Texto para el input de la búsqueda.
 Entry(frame,textvariable=var_searchInput).place(x=0,y=120)
 #Botón que llama a la función search.
 Button(frame, text="Search",command=search).place(x=130,y=120)
