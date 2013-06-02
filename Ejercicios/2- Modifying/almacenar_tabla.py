@@ -14,7 +14,7 @@ number_elements = int(raw_input("Introduce el número de elementos: "))
 rows = int(raw_input("Introduce número de filas: "))
 columns = int(raw_input("Introduce número de columnas: "))
 #Generamos lista de números aleatorios (de 0 a 1000).
-number_list = [random.randint(0,1000) for r in xrange(number_elements)]
+number_list = [random.randint(0,2000) for r in xrange(number_elements)]
 #Creamos una etiqueta <table> donde iremos almacenando los datos.
 table = soup.new_tag("table")
 #Iteramos por filas y columnas.
@@ -36,10 +36,13 @@ for i in range(0,rows):
         #Modificamos el atributo de la colimna para una mejor presentación.
         td_tag['align']="center"
         #Revisamos si el valor de la columna es mayor que 500 para aplicar el estilo correspondiente.
-        if int(td_tag.string)>500:
+        if int(td_tag.string)>=750 and int(td_tag.string)<=1200 :
+            td_tag['style']='color:green;border:solid'
+        elif int(td_tag.string)>1200:
             td_tag['style']='color:red;border:solid'
         else:
-            td_tag['style']='color:green;border:solid'
+            td_tag['style']='color:blue;border:solid'
+        td_tag.string=td_tag.string+'ºC'
         #Añadimos la columna a la fila.    
         tr_tag.append(td_tag)
     #Una vez que hemos finalizado todas las columnas de la fila, añadimos a la tabla    
