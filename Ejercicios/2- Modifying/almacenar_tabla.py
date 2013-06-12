@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup, SoupStrainer
 import re
 import random
 '''
-Formatear datos en una tabla, aquellos >500 en rojo, <500 en azul
+Formatear datos en una tabla, aquellos >500 en rojo, <500 en verde
 '''
 
 #Creamos un árbol con un código HTML vacío, sólo contiene las etiquetas básicas
@@ -42,7 +42,7 @@ for i in range(0,rows):
             td_tag['style']='color:red;border:solid'
         else:
             td_tag['style']='color:blue;border:solid'
-        td_tag.string=td_tag.string+'ºC'
+        #td_tag.string=(td_tag.string+'ºC')
         #Añadimos la columna a la fila.    
         tr_tag.append(td_tag)
     #Una vez que hemos finalizado todas las columnas de la fila, añadimos a la tabla    

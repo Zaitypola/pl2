@@ -3,53 +3,70 @@
 
 from Tkinter import *
 import noticias
-import Tkinter
+from threading import *
+import threading
 
+class MyThread(threading.Thread):
+    def __init__(self):
+        threading.Thread.__init__(self)
+
+    def run(self):
+        result = Tk()
+        scrollbar = Scrollbar(result)
+        scrollbar.pack(side=RIGHT, fill=Y)
+
+        result_text = Text(result, wrap=WORD, yscrollcommand=scrollbar.set)
+        result_text.pack()
+
+        scrollbar.config(command=result_text.yview)
+
+
+
+        '''Variables que usaremos en el programa. Partimos de dos listas:
+
+            feeds: Almacena la lista de ficheros XML que finalmente usaremos en la búsqueda.
+                   Iremos completándola en función de las fuentes que hayamos seleccionado y de
+                   las categorías.
+
+            sources: Almacenamos la lista de fuentes seleccionadas en la consola.
+                     De cada fuente almacenamos todas categorías accesibles.
+                     Según la selección de categoría, almacenaremos en feeds la URL
+                     de los XML correspondientes.
+
+        '''
+
+        feeds = []
+        sources = []
+        #Variables que controlan la selección de fuentes.
+        if var_ABC.get() == 1:
+            sources.append(abc)
+        if var_elMundo.get() == 1:
+            sources.append(elMundo)
+        if var_elPais.get() == 1:
+            sources.append(elPais)
+        #Añadimos a feeds las categorías de las fuentes elegidas.
+        for source in sources:
+            feeds.append(source[var_Category.get()])
+        #Llamamos a la función 'search' con los XML, el término de búsqueda y la ventana de salida.
+        noticias.search(feeds,var_searchInput.get(),result_text)
+        #Configuramos la salida como sólo de escritura.
+        result_text.configure(state='disabled')
+        result.title(var_searchInput.get())
+        result.mainloop()
 
 def search():
-    
-    '''Variables que usaremos en el programa. Partimos de dos listas:
-    
-        feeds: Almacena la lista de ficheros XML que finalmente usaremos en la búsqueda.
-               Iremos completándola en función de las fuentes que hayamos seleccionado y de 
-               las categorías.
-               
-        sources: Almacenamos la lista de fuentes seleccionadas en la consola.
-                 De cada fuente almacenamos todas categorías accesibles.
-                 Según la selección de categoría, almacenaremos en feeds la URL
-                 de los XML correspondientes.
-    
-    '''
-    feeds = []
-    sources = []
-    #Ventana de texto con la salida de los resultados, abajo está definida.
-    #Ponemos el cuadro de texto en modo lectura-escritura.
-    t.configure(state='normal')
-    #Vaciamos la salida de texto cada vez que hagamos una búsqueda.
-    t.delete(1.0,END)
-    #Variables que controlan la selección de fuentes.
-    if var_ABC.get() == 1:
-        sources.append(abc)
-    if var_elMundo.get() == 1:
-        sources.append(elMundo)
-    if var_elPais.get() == 1:
-        sources.append(elPais)
-    #Añadimos a feeds las categorías de las fuentes elegidas.    
-    for source in sources:
-        feeds.append(source[var_Category.get()])
-    #Llamamos a la función 'search' con los XML, el término de búsqueda y el
-    #cuadro de texto donde escribiremos la salida,
-    noticias.search(feeds,var_searchInput.get(),t)
-    #Configuramos la salida como sólo de escritura.
-    t.configure(state='disabled')
-    
+
+    thread = MyThread()
+    thread.start()
+
+
 #Lista de categorías.
 categories = [
         ("Latest news", 0),
         ("Sports", 1),
         ("National", 2),
         ("International", 3),
-    ]      
+    ]
 #Lista de XML, cada uno de una categoría diferente.
 abc = ['http://www.abc.es/rss/feeds/abc_ultima.xml',
        'http://www.abc.es/rss/feeds/abc_Deportes.xml',
@@ -66,10 +83,11 @@ elPais = ['http://ep00.epimg.net/rss/tags/ultimas_noticias.xml',
            'http://ep00.epimg.net/rss/elpais/portada.xml',
            'http://ep00.epimg.net/rss/internacional/portada.xml']
 
+#Creamos un hilo para ejecutar ambas ventanas en paralelo
 #Creamos la raíz de la interfaz, todos los elementos deben ir acopladas a ésta.
 root = Tk()
 #Modificamos la resolución al crearse.
-root.geometry("1024x768")
+root.geometry("300x200")
 #Título de la ventana
 root.title("News feeds searcher")
 #Creamos una ventana principal, vacía.
@@ -98,13 +116,6 @@ Checkbutton(frame, text="El Mundo",variable=var_elMundo).place(x=150,y=15)
 Checkbutton(frame, text="El Pais",variable=var_elPais).place(x=150,y=30)
 Checkbutton(frame, text="ABC",variable=var_ABC).place(x=150,y=45)
 #Texto de salida de la búsqueda.
-t=Text(frame, height=26, width=145,wrap=WORD)
-t.place(x=100,y=180)
-#Scrollbar para el texto
-scrollY = Scrollbar(root)
-scrollY.config(command=t.yview)
-t.config(yscrollcommand=scrollY.set)
-scrollY.pack(side=RIGHT,fill=Y)
 #Texto para el input de la búsqueda.
 Entry(frame,textvariable=var_searchInput).place(x=0,y=120)
 #Botón que llama a la función search.
