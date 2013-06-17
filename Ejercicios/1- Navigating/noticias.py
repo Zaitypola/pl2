@@ -25,7 +25,7 @@ def search(feeds,search_input,t):
             if item.find(["title","description"], text=re.compile(search_input,re.IGNORECASE)):
                 #Sacamos de la noticia que cumplael requisito la información necesaria.
                 title = item.title.string.encode('cp1252')
-                description = re.sub(r'(<img .+>|<a.+>)','',item.description.string).encode('cp1252')
+                description = re.sub(r'(<img .+>|<a.+>)','',item.description.string).encode('8859')
                 link = item.link.string.encode('cp1252')
                 date = item.pubDate.string.encode('cp1252')
                 t.insert(END,date+'\n')

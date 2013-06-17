@@ -3,7 +3,6 @@
 
 from Tkinter import *
 import noticias
-from threading import *
 import threading
 
 class MyThread(threading.Thread):
@@ -55,10 +54,8 @@ class MyThread(threading.Thread):
         result.mainloop()
 
 def search():
-
-    thread = MyThread()
-    thread.start()
-
+    thread=MyThread()
+    thread.run()
 
 #Lista de categorías.
 categories = [
